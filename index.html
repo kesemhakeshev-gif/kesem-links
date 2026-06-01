@@ -38,7 +38,7 @@
 
         .container {
             width: 100%;
-            max-width: 480px; /* רוחב מושלם למובייל */
+            max-width: 480px;
             padding: 40px 20px;
             text-align: center;
         }
@@ -107,19 +107,35 @@
             border: none;
         }
 
-        /* אנימציה עדינה לכפתור הראשי למשוך תשומת לב */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.02); }
             100% { transform: scale(1); }
         }
 
-        /* שורת אייקונים לרשתות חברתיות */
+        /* טקסט קטן מתחת לכפתור */
+        .btn-subtext {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: -10px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* רשתות חברתיות */
+        .social-title {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-top: 40px;
+            margin-bottom: -15px; 
+            font-weight: 400;
+        }
+
         .social-icons {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .social-icon {
@@ -138,36 +154,43 @@
 
     <div class="container">
         
-        <!-- החלף את הקישור לתמונה שלך -->
-        <img src="URL_TO_YOUR_PROFILE_PICTURE" alt="משה מדינה" class="profile-img">
+        <!-- חיבור לתמונה שהעלית לגיטהאב -->
+        <img src="profile.jpg" alt="משה מדינה" class="profile-img">
         
         <h1>משה מדינה</h1>
-        <div class="bio">מספר סיפורים ומדריך לצמיחה אישית.<br>עוזר לילדים ומבוגרים לגלות את הקסם שבהם.</div>
+        <div class="bio">סופר ומדריך לצמיחה אישית.<br>עוזר לילדים ומבוגרים לגלות את הקסם שבהם.</div>
 
-        <!-- כפתור רכישה ראשי ומודגש -->
-        <a href="URL_TO_YOUR_SALES_PAGE" class="link-btn main-btn">
+        <!-- כפתור רכישה ראשי -->
+        <a href="https://kesemhakeshev-gif.github.io/book001/" class="link-btn main-btn">
             📚 לרכישת רב-המכר "קסם וקשב"
         </a>
 
         <!-- כפתורי שירותים וקהילה -->
-        <a href="LINK_TO_WHATSAPP_GROUP" class="link-btn">
-            💬 הצטרפו לקהילת הוואטסאפ שלנו
+        <a href="https://kesemhakeshev-gif.github.io/kesemhakeshev/" class="link-btn">
+            🌐 לאתר הרשמי שלי
         </a>
 
-        <a href="LINK_TO_WHATSAPP_FOR_COACHING" class="link-btn">
+        <a href="https://chat.whatsapp.com/CWUXBrow8FDLAjgBcWg0UX" class="link-btn" style="margin-bottom: 5px;">
+            💬 הצטרפו לקהילת הוואטסאפ שלנו
+        </a>
+        <span class="btn-subtext">קבוצה 2 נפתחה! הראשונה כבר מלאה עד אפס מקום 🚀</span>
+
+        <a href="https://wa.me/972542347839?text=היי%20משה,%20אשמח%20לשמוע%20פרטים%20על%20ליווי%20אישי%20ואימון%20קשב" class="link-btn">
             🤝 ליווי אישי ואימון קשב (לתיאום בהודעה)
         </a>
 
-        <a href="LINK_TO_YOUTUBE_COURSES" class="link-btn">
+        <a href="https://youtube.com/@kesemhakeshev?si=S2aIKtRb7dJPEXTl" class="link-btn">
             🎓 הקורסים הדיגיטליים שלי ביוטיוב
         </a>
 
-        <!-- רשתות חברתיות -->
+        <!-- אזור הרשתות החברתיות -->
+        <div class="social-title">וגם ברשתות החברתיות:</div>
+        
         <div class="social-icons">
-            <a href="LINK_TO_TIKTOK" class="social-icon" title="טיקטוק"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="LINK_TO_INSTAGRAM" class="social-icon" title="אינסטגרם"><i class="fa-brands fa-instagram"></i></a>
-            <a href="LINK_TO_FACEBOOK" class="social-icon" title="פייסבוק"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="LINK_TO_YOUTUBE" class="social-icon" title="יוטיוב"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@the.magic.of.adhd?_r=1&_t=ZS-96qtvlcYD2q" class="social-icon" title="טיקטוק" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/kesemakeshev?igsh=dWNqd3Ruc2k0YWQy" class="social-icon" title="אינסטגרם" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1ELkUrUjrx/" class="social-icon" title="פייסבוק" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://youtube.com/@kesemhakeshev?si=S2aIKtRb7dJPEXTl" class="social-icon" title="יוטיוב" target="_blank"><i class="fa-brands fa-youtube"></i></a>
         </div>
 
     </div>
