@@ -94,7 +94,7 @@
         /* ══ שם ══ */
         .name-block {
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
             opacity: 0;
             animation: rise 0.65s 0.15s ease forwards;
         }
@@ -105,6 +105,7 @@
             font-weight: 900;
             color: var(--brown);
             line-height: 1.1;
+            letter-spacing: 0.5px;
             margin-bottom: 8px;
         }
 
@@ -127,11 +128,34 @@
             color: var(--text-mid);
             line-height: 1.9;
             font-weight: 400;
+            margin-bottom: 14px;
         }
 
         .bio strong {
             color: var(--brown);
             font-weight: 700;
+        }
+
+        /* ציטוט */
+        .quote-line {
+            display: inline-block;
+            font-size: 0.88rem;
+            color: var(--orange);
+            font-weight: 600;
+            font-style: italic;
+            border-top: 1px solid var(--sand);
+            padding-top: 12px;
+            margin-top: 2px;
+            line-height: 1.5;
+        }
+
+        /* שורת קהל */
+        .audience-line {
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            margin-top: 10px;
+            font-weight: 400;
+            font-style: italic;
         }
 
         /* ══ קו הפרדה ══ */
@@ -160,7 +184,7 @@
             display: flex;
             align-items: center;
             width: 100%;
-            padding: 15px 18px;
+            padding: 16px 18px;
             text-decoration: none;
             border-radius: 14px;
             transition: transform 0.22s ease, box-shadow 0.22s ease;
@@ -175,8 +199,23 @@
             box-shadow: 0 6px 22px rgba(217,107,45,0.35);
             color: #fff;
             border: none;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-primary:hover { box-shadow: 0 10px 30px rgba(217,107,45,0.48); }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 60% 50%, rgba(255,255,255,0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-primary:hover::after { opacity: 1; }
+        .btn-primary:hover {
+            box-shadow: 0 10px 30px rgba(217,107,45,0.52);
+        }
 
         .btn-secondary {
             background: var(--warm-white);
@@ -184,15 +223,16 @@
             box-shadow: 0 2px 8px rgba(74,44,26,0.05);
             color: var(--brown);
         }
+
         .btn-secondary:hover {
             border-color: rgba(217,107,45,0.28);
-            box-shadow: 0 5px 18px rgba(74,44,26,0.09);
+            box-shadow: 0 6px 20px rgba(74,44,26,0.1);
         }
 
         .btn-icon { font-size: 1.2rem; margin-left: 13px; flex-shrink: 0; width: 26px; text-align: center; }
         .btn-content { flex: 1; text-align: right; }
-        .btn-title  { font-size: 0.98rem; font-weight: 700; line-height: 1.2; display: block; }
-        .btn-sub    { font-size: 0.76rem; font-weight: 400; margin-top: 2px; display: block; opacity: 0.72; }
+        .btn-title  { font-size: 1rem; font-weight: 700; line-height: 1.2; display: block; }
+        .btn-sub    { font-size: 0.78rem; font-weight: 400; margin-top: 3px; display: block; opacity: 0.72; }
         .btn-primary .btn-sub { opacity: 0.88; }
 
         .btn-arrow {
@@ -219,7 +259,7 @@
         .link-btn:nth-child(4) { animation-delay: 0.58s; }
         .link-btn:nth-child(5) { animation-delay: 0.66s; }
 
-        /* ══ רשתות – קלפים ══ */
+        /* ══ רשתות ══ */
         .social-section {
             width: 100%;
             margin-top: 32px;
@@ -250,7 +290,7 @@
             padding: 14px 14px;
             border-radius: 14px;
             text-decoration: none;
-            transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
             color: #fff;
             position: relative;
             overflow: hidden;
@@ -260,23 +300,22 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(255,255,255,0.0);
+            background: rgba(255,255,255,0);
             transition: background 0.2s;
             border-radius: 14px;
         }
-        .social-card:hover::after { background: rgba(255,255,255,0.08); }
+
+        .social-card:hover::after { background: rgba(255,255,255,0.1); }
         .social-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.25) !important;
         }
 
-        /* צבעי רקע */
-        .sc-tiktok    { background: #010101; box-shadow: 0 4px 14px rgba(1,1,1,0.3); }
-        .sc-instagram { background: linear-gradient(135deg, #6A3093 0%, #A044FF 25%, #E1306C 60%, #F77737 85%, #FCAF45 100%); box-shadow: 0 4px 14px rgba(225,48,108,0.35); }
-        .sc-facebook  { background: #1877F2; box-shadow: 0 4px 14px rgba(24,119,242,0.35); }
-        .sc-youtube   { background: #FF0000; box-shadow: 0 4px 14px rgba(255,0,0,0.3); }
+        .sc-tiktok    { background: #010101; box-shadow: 0 4px 14px rgba(1,1,1,0.28); }
+        .sc-instagram { background: linear-gradient(135deg, #6A3093 0%, #A044FF 25%, #E1306C 60%, #F77737 85%, #FCAF45 100%); box-shadow: 0 4px 14px rgba(225,48,108,0.32); }
+        .sc-facebook  { background: #1877F2; box-shadow: 0 4px 14px rgba(24,119,242,0.32); }
+        .sc-youtube   { background: #FF0000; box-shadow: 0 4px 14px rgba(255,0,0,0.28); }
 
-        /* אזור האייקון – ריבוע עם צבע כהה יותר */
         .sc-icon-wrap {
             width: 38px;
             height: 38px;
@@ -288,13 +327,8 @@
             flex-shrink: 0;
         }
 
-        .sc-icon-wrap svg {
-            width: 20px;
-            height: 20px;
-            fill: #fff;
-        }
+        .sc-icon-wrap svg { width: 20px; height: 20px; fill: #fff; }
 
-        .sc-text {}
         .sc-name { font-size: 0.84rem; font-weight: 700; display: block; line-height: 1.2; }
         .sc-desc { font-size: 0.67rem; opacity: 0.78; display: block; margin-top: 2px; }
 
@@ -336,6 +370,8 @@
             <strong>היום, אני והוא שותפים –</strong><br>
             וביחד מלווים אנשים למסע אל תוך עצמם.
         </p>
+        <span class="quote-line">״הקשב הוא מתנה קסומה עם תופעות לוואי״</span>
+        <p class="audience-line">למי שחי עם קשב – ולמי שאוהב מישהו כזה.</p>
     </div>
 
     <div class="rule">
@@ -351,7 +387,7 @@
             <span class="btn-icon">📚</span>
             <div class="btn-content">
                 <span class="btn-title">רב-המכר "קסם וקשב"</span>
-                <span class="btn-sub">הספר שמשנה את הדרך שרואים ADHD</span>
+                <span class="btn-sub">הסיפור שחבל שלא סיפרו לי בתחילת הדרך</span>
             </div>
             <span class="btn-arrow">‹</span>
         </a>
@@ -401,13 +437,10 @@
         <div class="social-label">עוד תוכן כאן</div>
         <div class="social-grid">
 
-            <!-- טיקטוק -->
             <a href="https://www.tiktok.com/@the.magic.of.adhd?_r=1&_t=ZS-96qtvlcYD2q"
                class="social-card sc-tiktok" target="_blank">
                 <div class="sc-icon-wrap">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
                 </div>
                 <div class="sc-text">
                     <span class="sc-name">TikTok</span>
@@ -415,13 +448,10 @@
                 </div>
             </a>
 
-            <!-- אינסטגרם -->
             <a href="https://www.instagram.com/kesemakeshev?igsh=dWNqd3Ruc2k0YWQy"
                class="social-card sc-instagram" target="_blank">
                 <div class="sc-icon-wrap">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </div>
                 <div class="sc-text">
                     <span class="sc-name">Instagram</span>
@@ -429,13 +459,10 @@
                 </div>
             </a>
 
-            <!-- פייסבוק -->
             <a href="https://www.facebook.com/share/1ELkUrUjrx/"
                class="social-card sc-facebook" target="_blank">
                 <div class="sc-icon-wrap">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 </div>
                 <div class="sc-text">
                     <span class="sc-name">Facebook</span>
@@ -443,13 +470,10 @@
                 </div>
             </a>
 
-            <!-- יוטיוב -->
             <a href="https://youtube.com/@kesemhakeshev?si=S2aIKtRb7dJPEXTl"
                class="social-card sc-youtube" target="_blank">
                 <div class="sc-icon-wrap">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </div>
                 <div class="sc-text">
                     <span class="sc-name">YouTube</span>
