@@ -3,197 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>משה מדינה - הקישורים שלי</title>
-    <!-- פונט מודרני -->
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <!-- אייקונים לרשתות חברתיות -->
+    <title>משה מדינה | קסם הקשב</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --primary: #4F46E5; 
-            --primary-hover: #4338CA;
-            --text-dark: #1F2937;
-            --text-light: #4B5563;
-            --accent: #F59E0B; 
-            --accent-hover: #D97706;
-            --bg-color: #F9FAFB;
+            --cream:      #FAF6F0;
+            --warm-white: #FFFFFF;
+            --orange:     #D96B2D;
+            --orange-l:   #F08040;
+            --brown:      #4A2C1A;
+            --brown-m:    #7A4E35;
+            --brown-l:    #A87558;
+            --sand:       #E8D5BC;
+            --sand-l:     #F3E9DA;
+            --text:       #2C1A0E;
+            --text-mid:   #6B4530;
+            --text-soft:  #9E7A5F;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Heebo', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            line-height: 1.6;
+            background: var(--cream);
+            color: var(--text);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 100% 50% at 0% 0%, rgba(217,107,45,0.07) 0%, transparent 55%),
+                radial-gradient(ellipse 80% 60% at 100% 100%, rgba(74,44,26,0.05) 0%, transparent 55%);
+            pointer-events: none;
         }
 
         .container {
+            position: relative;
+            z-index: 1;
             width: 100%;
-            max-width: 480px;
-            padding: 40px 20px;
-            text-align: center;
+            max-width: 460px;
+            padding: 48px 22px 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* תמונת פרופיל */
+        /* ══ פרופיל ══ */
+        .profile-wrap {
+            margin-bottom: 22px;
+            opacity: 0;
+            animation: rise 0.65s 0.05s ease forwards;
+        }
+
+        .profile-ring {
+            width: 108px;
+            height: 108px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(145deg, var(--orange-l), var(--sand), var(--brown-m));
+        }
+
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            border: 3px solid var(--cream);
+            display: block;
         }
 
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 5px;
+        .profile-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--sand-l);
+            border: 3px solid var(--cream);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+        }
+
+        /* ══ שם ══ */
+        .name-block {
+            text-align: center;
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: rise 0.65s 0.15s ease forwards;
+        }
+
+        .name {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.95rem;
+            font-weight: 900;
+            color: var(--brown);
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .brand-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--orange);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 13px;
+            border-radius: 20px;
+            letter-spacing: 0.4px;
+            margin-bottom: 16px;
         }
 
         .bio {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 35px;
+            font-size: 0.98rem;
+            color: var(--text-mid);
+            line-height: 1.9;
             font-weight: 400;
         }
 
-        /* כפתורים משותפים */
-        .link-btn {
-            display: block;
-            width: 100%;
-            padding: 16px 20px;
-            background-color: #ffffff;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 1.1rem;
+        .bio strong {
+            color: var(--brown);
             font-weight: 700;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid #E5E7EB;
-            transition: all 0.3s ease;
         }
 
-        .link-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
-            border-color: #D1D5DB;
-        }
-
-        /* הכפתור הראשי (רכישת הספר) מודגש במיוחד */
-        .main-btn {
-            background-color: var(--accent);
-            color: #ffffff;
-            border: none;
-            font-size: 1.2rem;
-            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        .main-btn:hover {
-            background-color: var(--accent-hover);
-            color: #ffffff;
-            border: none;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        /* טקסט קטן מתחת לכפתור */
-        .btn-subtext {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-top: -10px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        /* רשתות חברתיות */
-        .social-title {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-top: 40px;
-            margin-bottom: -15px; 
-            font-weight: 400;
-        }
-
-        .social-icons {
+        /* ══ קו הפרדה ══ */
+        .rule {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: rise 0.65s 0.25s ease forwards;
         }
 
-        .social-icon {
-            color: var(--text-light);
-            font-size: 1.8rem;
-            transition: color 0.3s ease;
+        .rule-line { flex: 1; height: 1px; background: var(--sand); }
+        .rule-dot  { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+
+        /* ══ כפתורים ══ */
+        .links-stack {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 15px 18px;
             text-decoration: none;
+            border-radius: 14px;
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+            opacity: 0;
+            animation: rise 0.55s ease forwards;
         }
 
-        .social-icon:hover {
-            color: var(--primary);
+        .link-btn:hover { transform: translateY(-2px); }
+
+        .btn-primary {
+            background: linear-gradient(130deg, var(--orange-l) 0%, var(--orange) 100%);
+            box-shadow: 0 6px 22px rgba(217,107,45,0.35);
+            color: #fff;
+            border: none;
+        }
+        .btn-primary:hover { box-shadow: 0 10px 30px rgba(217,107,45,0.48); }
+
+        .btn-secondary {
+            background: var(--warm-white);
+            border: 1.5px solid rgba(74,44,26,0.1);
+            box-shadow: 0 2px 8px rgba(74,44,26,0.05);
+            color: var(--brown);
+        }
+        .btn-secondary:hover {
+            border-color: rgba(217,107,45,0.28);
+            box-shadow: 0 5px 18px rgba(74,44,26,0.09);
+        }
+
+        .btn-icon { font-size: 1.2rem; margin-left: 13px; flex-shrink: 0; width: 26px; text-align: center; }
+        .btn-content { flex: 1; text-align: right; }
+        .btn-title  { font-size: 0.98rem; font-weight: 700; line-height: 1.2; display: block; }
+        .btn-sub    { font-size: 0.76rem; font-weight: 400; margin-top: 2px; display: block; opacity: 0.72; }
+        .btn-primary .btn-sub { opacity: 0.88; }
+
+        .btn-arrow {
+            font-size: 0.82rem; opacity: 0.35; margin-right: 2px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .link-btn:hover .btn-arrow { transform: translateX(-3px); opacity: 0.65; }
+
+        .badge {
+            background: var(--orange);
+            color: #fff;
+            font-size: 0.62rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 8px;
+            margin-right: 6px;
+            letter-spacing: 0.3px;
+            vertical-align: middle;
+        }
+
+        .link-btn:nth-child(1) { animation-delay: 0.30s; }
+        .link-btn:nth-child(2) { animation-delay: 0.40s; }
+        .link-btn:nth-child(3) { animation-delay: 0.50s; }
+        .link-btn:nth-child(4) { animation-delay: 0.58s; }
+        .link-btn:nth-child(5) { animation-delay: 0.66s; }
+
+        /* ══ רשתות – קלפים ══ */
+        .social-section {
+            width: 100%;
+            margin-top: 32px;
+            opacity: 0;
+            animation: rise 0.65s 0.8s ease forwards;
+        }
+
+        .social-label {
+            font-size: 0.7rem;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 14px 14px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.0);
+            transition: background 0.2s;
+            border-radius: 14px;
+        }
+        .social-card:hover::after { background: rgba(255,255,255,0.08); }
+        .social-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+        }
+
+        /* צבעי רקע */
+        .sc-tiktok    { background: #010101; box-shadow: 0 4px 14px rgba(1,1,1,0.3); }
+        .sc-instagram { background: linear-gradient(135deg, #6A3093 0%, #A044FF 25%, #E1306C 60%, #F77737 85%, #FCAF45 100%); box-shadow: 0 4px 14px rgba(225,48,108,0.35); }
+        .sc-facebook  { background: #1877F2; box-shadow: 0 4px 14px rgba(24,119,242,0.35); }
+        .sc-youtube   { background: #FF0000; box-shadow: 0 4px 14px rgba(255,0,0,0.3); }
+
+        /* אזור האייקון – ריבוע עם צבע כהה יותר */
+        .sc-icon-wrap {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .sc-icon-wrap svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
+        .sc-text {}
+        .sc-name { font-size: 0.84rem; font-weight: 700; display: block; line-height: 1.2; }
+        .sc-desc { font-size: 0.67rem; opacity: 0.78; display: block; margin-top: 2px; }
+
+        /* ══ footer ══ */
+        .footer-note {
+            margin-top: 36px;
+            font-size: 0.7rem;
+            color: var(--sand);
+            opacity: 0;
+            animation: rise 0.65s 1s ease forwards;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
+<div class="container">
 
-    <div class="container">
-        
-        <!-- חיבור לתמונה שהעלית לגיטהאב -->
-        <img src="profile.jpg" alt="משה מדינה" class="profile-img">
-        
-        <h1>משה מדינה</h1>
-        <div class="bio">סופר ומדריך לצמיחה אישית.<br>עוזר לילדים ומבוגרים לגלות את הקסם שבהם.</div>
-
-        <!-- כפתור רכישה ראשי -->
-        <a href="https://kesemhakeshev-gif.github.io/book001/" class="link-btn main-btn">
-            📚 לרכישת רב-המכר "קסם וקשב"
-        </a>
-
-        <!-- כפתורי שירותים וקהילה -->
-        <a href="https://kesemhakeshev-gif.github.io/kesemhakeshev/" class="link-btn">
-            🌐 לאתר הרשמי שלי
-        </a>
-
-        <a href="https://chat.whatsapp.com/CWUXBrow8FDLAjgBcWg0UX" class="link-btn" style="margin-bottom: 5px;">
-            💬 הצטרפו לקהילת הוואטסאפ שלנו
-        </a>
-        <span class="btn-subtext">קבוצה 2 נפתחה! הראשונה כבר מלאה עד אפס מקום 🚀</span>
-
-        <a href="https://wa.me/972542347839?text=היי%20משה,%20אשמח%20לשמוע%20פרטים%20על%20ליווי%20אישי%20ואימון%20קשב" class="link-btn">
-            🤝 ליווי אישי ואימון קשב (לתיאום בהודעה)
-        </a>
-
-        <a href="https://youtube.com/@kesemhakeshev?si=S2aIKtRb7dJPEXTl" class="link-btn">
-            🎓 הקורסים הדיגיטליים שלי ביוטיוב
-        </a>
-
-        <!-- אזור הרשתות החברתיות -->
-        <div class="social-title">וגם ברשתות החברתיות:</div>
-        
-        <div class="social-icons">
-            <a href="https://www.tiktok.com/@the.magic.of.adhd?_r=1&_t=ZS-96qtvlcYD2q" class="social-icon" title="טיקטוק" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://www.instagram.com/kesemakeshev?igsh=dWNqd3Ruc2k0YWQy" class="social-icon" title="אינסטגרם" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/1ELkUrUjrx/" class="social-icon" title="פייסבוק" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://youtube.com/@kesemhakeshev?si=S2aIKtRb7dJPEXTl" class="social-icon" title="יוטיוב" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    <!-- פרופיל -->
+    <div class="profile-wrap">
+        <div class="profile-ring">
+            <img src="profile.jpg" alt="משה מדינה" class="profile-img"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="profile-placeholder">🧠</div>
         </div>
+    </div>
+
+    <!-- שם וביו -->
+    <div class="name-block">
+        <div class="name">משה מדינה</div>
+        <div class="brand-pill">✨ קסם הקשב</div>
+        <p class="bio">
+            קשב ו-ADHD<br><br>
+            לפני כעשור הבנתי שגם אני שייך למשפחת הקשב.<br>
+            מאז כעסתי עליו, למדתי אותו, חקרתי אותו, וחיבקתי אותו.<br>
+            <strong>היום, אני והוא שותפים –</strong><br>
+            וביחד מלווים אנשים למסע אל תוך עצמם.
+        </p>
+    </div>
+
+    <div class="rule">
+        <div class="rule-line"></div>
+        <div class="rule-dot"></div>
+        <div class="rule-line"></div>
+    </div>
+
+    <!-- כפתורים -->
+    <div class="links-stack">
+
+        <a href="https://kesemhakeshev-gif.github.io/book001/" class="link-btn btn-primary">
+            <span class="btn-icon">📚</span>
+            <div class="btn-content">
+                <span class="btn-title">רב-המכר "קסם וקשב"</span>
+                <span class="btn-sub">הספר שמשנה את הדרך שרואים ADHD</span>
+            </div>
+            <span class="btn-arrow">‹</span>
+        </a>
+
+        <a href="https://chat.whatsapp.com/CWUXBrow8FDLAjgBcWg0UX" class="link-btn btn-secondary">
+            <span class="btn-icon">💬</span>
+            <div class="btn-content">
+                <span class="btn-title">
+                    <span class="badge">1,000+</span>קהילת הוואטסאפ
+                </span>
+                <span class="btn-sub">הצטרפו לקבוצה 2 – הראשונה כבר מלאה</span>
+            </div>
+            <span class="btn-arrow">‹</span>
+        </a>
+
+        <a href="https://wa.me/972542347839?text=היי%20משה,%20אשמח%20לשמוע%20פרטים%20על%20ליווי%20אישי%20ואימון%20קשב" class="link-btn btn-secondary">
+            <span class="btn-icon">🤝</span>
+            <div class="btn-content">
+                <span class="btn-title">ליווי אישי ואימון קשב</span>
+                <span class="btn-sub">שיחת היכרות ראשונה ללא עלות</span>
+            </div>
+            <span class="btn-arrow">‹</span>
+        </a>
+
+        <a href="https://kesemhakeshev-gif.github.io/kesemhakeshev/" class="link-btn btn-secondary">
+            <span class="btn-icon">🌐</span>
+            <div class="btn-content">
+                <span class="btn-title">האתר הרשמי</span>
+                <span class="btn-sub">מאמרים, כלים ותוכן חינמי</span>
+            </div>
+            <span class="btn-arrow">‹</span>
+        </a>
+
+        <a href="https://youtube.com/@kesemhakeshev?si=S2aIKtRb7dJPEXTl" class="link-btn btn-secondary">
+            <span class="btn-icon">▶️</span>
+            <div class="btn-content">
+                <span class="btn-title">סרטונים קצרים ביוטיוב</span>
+                <span class="btn-sub">זוויות חדשות על ADHD – בדקה אחת</span>
+            </div>
+            <span class="btn-arrow">‹</span>
+        </a>
 
     </div>
 
+    <!-- רשתות חברתיות -->
+    <div class="social-section">
+        <div class="social-label">עוד תוכן כאן</div>
+        <div class="social-grid">
+
+            <!-- טיקטוק -->
+            <a href="https://www.tiktok.com/@the.magic.of.adhd?_r=1&_t=ZS-96qtvlcYD2q"
+               class="social-card sc-tiktok" target="_blank">
+                <div class="sc-icon-wrap">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+                    </svg>
+                </div>
+                <div class="sc-text">
+                    <span class="sc-name">TikTok</span>
+                    <span class="sc-desc">סרטונים ויראליים</span>
+                </div>
+            </a>
+
+            <!-- אינסטגרם -->
+            <a href="https://www.instagram.com/kesemakeshev?igsh=dWNqd3Ruc2k0YWQy"
+               class="social-card sc-instagram" target="_blank">
+                <div class="sc-icon-wrap">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </div>
+                <div class="sc-text">
+                    <span class="sc-name">Instagram</span>
+                    <span class="sc-desc">תוכן יומי והשראה</span>
+                </div>
+            </a>
+
+            <!-- פייסבוק -->
+            <a href="https://www.facebook.com/share/1ELkUrUjrx/"
+               class="social-card sc-facebook" target="_blank">
+                <div class="sc-icon-wrap">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </div>
+                <div class="sc-text">
+                    <span class="sc-name">Facebook</span>
+                    <span class="sc-desc">פוסטים ועדכונים</span>
+                </div>
+            </a>
+
+            <!-- יוטיוב -->
+            <a href="https://youtube.com/@kesemhakeshev?si=S2aIKtRb7dJPEXTl"
+               class="social-card sc-youtube" target="_blank">
+                <div class="sc-icon-wrap">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </div>
+                <div class="sc-text">
+                    <span class="sc-name">YouTube</span>
+                    <span class="sc-desc">שורטס וסרטונים</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="footer-note">קסם הקשב © 2025</div>
+
+</div>
 </body>
 </html>
